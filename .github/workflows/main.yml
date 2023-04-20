@@ -61,9 +61,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Login to Docker Hub
-        run: echo ${{ secrets.DOCKER_USERNAME }}
-        run: echo ${{ secrets.DOCKER_PASSWORD }}         
+      - name: Verified Credentials
+        run: echo ${{ secrets.DOCKER_USERNAME }} |  echo ${{ secrets.DOCKER_PASSWORD }} | echo ${{ secrets.DOCKER_REPO }}
+      - name: Login to Docker Hub              
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
       - name: Build Container image
         run: docker build -t ${{ secrets.DOCKER_REPO }}:latest .
