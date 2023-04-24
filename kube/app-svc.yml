@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: spotify-svc
+spec:
+  selector:
+    app: spotify
+  ports:
+    - name: spotify
+      port: 8080
+      targetPort: 8080
+      nodePort: 30008
+  type: NodePort
